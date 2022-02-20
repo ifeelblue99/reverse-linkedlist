@@ -1,0 +1,40 @@
+/*
+Reverse Linkedist
+*/
+
+// node 
+function Node(data){
+  this.data = data
+  this.next = null
+}
+
+// set up
+nodeHead = new Node("head")
+node2 = new Node("2")
+node3 = new Node("3")
+node4 = new Node("4")
+nodeTail = new Node("tail")
+
+nodeHead.next = node2
+node2.next = node3
+node3.next = node4
+node4.next = nodeTail
+//
+
+// func to reverse
+Node.prototype.reverseLinkedList = function(){
+  let current = this,
+      nodeArray = []
+  while(current){
+    nodeArray.push(current)
+    
+    current = current.next
+  }
+  nodeArray.reverse()
+  nodeArray.forEach((el, index)=>{
+    el.next = nodeArray[index+1]
+  })
+  return nodeArray[0]
+}
+
+console.log(nodeHead.reverseLinkedList());
